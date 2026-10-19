@@ -4,10 +4,12 @@ Code and per-seed results for the article "Internal Temporal Conditioning of Sel
 State-Space Models for Event-Time Prediction: A Controlled Evaluation" (submitted to IEEE Access). CT-BS-Mamba is a selective
 state-space event-time predictor with two internal conditioning pathways: a relative-time (CT)
 correction of the update timescale and burstiness-selective (BS) corrections of the timescale and
-output, computed from the burstiness and memory of the observed history. This repository contains the model and training code with the launch settings of every
-reported model, the common evaluator used for the closed-form CRPS, log likelihood, RMSE and PIT
+output, computed from the burstiness and memory of the observed history. This repository contains the CT-BS-Mamba model and training code with the launch settings of
+every reported CT-BS-Mamba model, the common evaluator used for the closed-form CRPS, log likelihood, RMSE and PIT
 scores, the GRU-LogNormMix reference, code that reconstructs all nine datasets from their public
-sources, and the per-seed results behind every number reported in the article and its supplement.
+sources, and the per-seed results behind the tables and figures of the article and its supplement.
+For the intensity-based baselines, the sampled CRPS and the architecture search, only the recorded
+scores are included (see [Not included](#not-included)); the runtime measurements are not included.
 
 ## Layout
 
@@ -18,7 +20,7 @@ sources, and the per-seed results behind every number reported in the article an
 | `scripts/run_paper_configs.sh` | Launch settings of every reported CT-BS model |
 | `evaluation/` | Common evaluator (`common.py`), checkpoint scoring (`score_ctbs.py`), GRU-LogNormMix reference (`train_gru.py`, `gru_lognormmix.py`), scorer check (`check_scorer.py`) |
 | `data/` | Dataset reconstruction (`rebuild_datasets.py`, generators, `dataset_manifest.json`) |
-| `results/` | Per-seed results behind every reported number |
+| `results/` | Per-seed results behind the reported tables and figures |
 | `analysis/` | Scripts that compute the dataset descriptors, history-light references, seed-level tests, CT weights, and per-target summaries in `results/` |
 
 ## Requirements and installation
@@ -151,8 +153,9 @@ python evaluation/check_scorer.py
 
 ## Checking the reported numbers
 
-Every mean, SD, and test in the article can be recomputed from the per-seed files in `results/`
-(mean over the seeds of a condition; SDs are sample SDs). Relative changes are taken between
+The means, SDs, and tests in the article can be recomputed from the per-seed files in `results/`
+(mean over the seeds of a condition; SDs are sample SDs); the runtimes of Table 5 are not included,
+and Tables S7-S9 are reproduced from recorded values. Relative changes are taken between
 seed means of the same dataset.
 
 | Article | Source in `results/` |

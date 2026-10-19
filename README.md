@@ -58,7 +58,7 @@ intervals are replaced by 1e-6. The reported correlated-exponential models were 
 validated on these copies, and the evaluator scores correlated-exponential checkpoints on its
 test split (Supplementary Section S1).
 
-The tail indices of Table 3 are written to `results/dataset_descriptors.json` (`tail_index`) by
+The tail indices of Table 2 are written to `results/dataset_descriptors.json` (`tail_index`) by
 `analysis/compute_descriptors.py`: generator parameters for the synthetic datasets and, for
 retweet, the Hill estimate on the largest 5% of positive training intervals.
 
@@ -157,10 +157,10 @@ seed means of the same dataset.
 
 | Article | Source in `results/` |
 |---|---|
-| Table 3 (dataset descriptors) | `dataset_descriptors.json` (`analysis/compute_descriptors.py`) |
-| Table 5 upper block, Fig. 2(a) | `ablation_crps.csv`, column `crps` |
-| Table 5 lower block, Fig. 2(b) lighter bars, Table S4 | `nll_ablation_eval.csv` |
-| Table 5 marginal and running-mean references | `simple_baselines.json` (`analysis/compute_simple_baselines.py`) |
+| Table 2 (datasets) | `dataset_descriptors.json` (`analysis/compute_descriptors.py`) |
+| Table 4 upper block, Fig. 2(a) | `ablation_crps.csv`, column `crps` |
+| Table 4 lower block, Fig. 2(b) lighter bars, Table S4 | `nll_ablation_eval.csv` |
+| Table 4 marginal and running-mean references | `simple_baselines.json` (`analysis/compute_simple_baselines.py`) |
 | Fig. 2(b), (c), Table S6 | `common_scoring.csv` (`full_system` and `GRU-LogNormMix`) |
 | Fig. 3 | `system_detail.json` (`analysis/export_system_detail.py`) |
 | Table S2 | `ablation_eval.csv`, conditions `ct_bs` and `ct_bs_eta0` (`ll`, `rmse`, `crps_sampled`) |
@@ -236,7 +236,7 @@ uniform and their mean; `n` is the number of test targets.
   included.
 - The training runs of the architecture search (Supplementary Table S9); only their recorded
   RMSE values are included.
-- The runtime measurements of Table 6.
+- The runtime measurements of Table 5.
 
 ## Citation
 

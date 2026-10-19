@@ -1,6 +1,6 @@
-"""Dataset descriptors (article Table 3) computed from the train/test splits.
+"""Dataset descriptors (article Table 2) computed from the train/test splits.
 Usage: python analysis/compute_descriptors.py <data_dir> [output.json]
-Writes results/dataset_descriptors.json by default; Table 3 of the article reports it.
+Writes results/dataset_descriptors.json by default; Table 2 of the article reports it.
 B and M pool within-sequence intervals of the training split; B is the large-sample (CV-1)/(CV+1);
 M is the Pearson correlation of adjacent intervals, pairs never crossing a sequence boundary.
 Tail index: generator parameter of the synthetic datasets, read from data/dataset_manifest.json

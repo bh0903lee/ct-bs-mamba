@@ -1,0 +1,83 @@
+{
+  "syn_exp_01": {
+    "events_per_train_sequence": 158.948,
+    "B": 0.1304110105285342,
+    "M": 0.1684492825944029,
+    "test_sd": 67.75300416395538,
+    "n_test_targets": 52489,
+    "tail_index": null,
+    "tail_index_source": "not reported"
+  },
+  "syn_powerlaw_01": {
+    "events_per_train_sequence": 43.47566666666667,
+    "B": 0.2532777785227296,
+    "M": 0.15983362936215917,
+    "test_sd": 1.76754799369791,
+    "n_test_targets": 25682,
+    "tail_index": 1.2,
+    "tail_index_source": "generator: Lomax offspring-delay exponent gamma - 1"
+  },
+  "syn_powerlaw_02": {
+    "events_per_train_sequence": 43.69533333333333,
+    "B": 0.28083476713972894,
+    "M": 0.14855458695996487,
+    "test_sd": 2.893145125039528,
+    "n_test_targets": 25895,
+    "tail_index": 2.2,
+    "tail_index_source": "generator: Lomax offspring-delay exponent gamma - 1"
+  },
+  "syn_corr_pareto_01": {
+    "events_per_train_sequence": 59.511,
+    "B": -0.07297162244273177,
+    "M": 0.14691090708025537,
+    "test_sd": 0.1751683752476816,
+    "n_test_targets": 17686,
+    "tail_index": 2.5,
+    "tail_index_source": "generator: Pareto shape alpha"
+  },
+  "syn_corr_pareto_02": {
+    "events_per_train_sequence": 59.175666666666665,
+    "B": 0.43143258600426315,
+    "M": 0.06618455927702448,
+    "test_sd": 0.158252770747489,
+    "n_test_targets": 16960,
+    "tail_index": 2.0,
+    "tail_index_source": "generator: Pareto shape alpha"
+  },
+  "data_retweet_sampled": {
+    "events_per_train_sequence": 109.08333333333333,
+    "B": 0.7263092891483002,
+    "M": 0.33714029255112343,
+    "test_sd": 16160.844366119552,
+    "n_test_targets": 22585,
+    "tail_index": 0.8014937398423423,
+    "tail_index_source": "Hill estimate, largest 5% of positive training intervals"
+  },
+  "data_so_sampled": {
+    "events_per_train_sequence": 116.66111111111111,
+    "B": 0.09886456756896268,
+    "M": 0.13037000499128856,
+    "test_sd": 0.6562061503712933,
+    "n_test_targets": 22842,
+    "tail_index": null,
+    "tail_index_source": "not reported"
+  },
+  "data_taxi_sampled": {
+    "events_per_train_sequence": 37.03857142857143,
+    "B": 0.13776474524057608,
+    "M": 0.0926373897014503,
+    "test_sd": 0.2977508449886539,
+    "n_test_targets": 14420,
+    "tail_index": null,
+    "tail_index_source": "not reported"
+  },
+  "data_earthquake": {
+    "events_per_train_sequence": 16.45,
+    "B": 0.1788720556243091,
+    "M": 0.22405784564133785,
+    "test_sd": 1.087994489886716,
+    "n_test_targets": 7733,
+    "tail_index": null,
+    "tail_index_source": "not reported"
+  }
+}

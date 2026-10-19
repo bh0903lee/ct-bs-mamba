@@ -1,0 +1,47 @@
+{
+  "syn_exp_01": {
+    "n_targets": 52489,
+    "marginal_crps": 30.7554041201844,
+    "running_mean_exponential_crps": 27.17153547206525
+  },
+  "syn_powerlaw_01": {
+    "n_targets": 25682,
+    "marginal_crps": 0.6909787831848764,
+    "running_mean_exponential_crps": 0.7494955438392652
+  },
+  "syn_powerlaw_02": {
+    "n_targets": 25895,
+    "marginal_crps": 1.1367698420103762,
+    "running_mean_exponential_crps": 1.2531551992703143
+  },
+  "syn_corr_pareto_01": {
+    "n_targets": 17686,
+    "marginal_crps": 0.04266856956171071,
+    "running_mean_exponential_crps": 0.05704926210682499
+  },
+  "syn_corr_pareto_02": {
+    "n_targets": 16960,
+    "marginal_crps": 0.03451596564199642,
+    "running_mean_exponential_crps": 0.04153414364290107
+  },
+  "data_retweet_sampled": {
+    "n_targets": 22585,
+    "marginal_crps": 2487.0400766593602,
+    "running_mean_exponential_crps": 2471.201211369834
+  },
+  "data_so_sampled": {
+    "n_targets": 22842,
+    "marginal_crps": 0.2989202026819816,
+    "running_mean_exponential_crps": 0.2982232092026403
+  },
+  "data_taxi_sampled": {
+    "n_targets": 14420,
+    "marginal_crps": 0.11337435130054833,
+    "running_mean_exponential_crps": 0.12385827178011737
+  },
+  "data_earthquake": {
+    "n_targets": 7733,
+    "marginal_crps": 0.5549058598507545,
+    "running_mean_exponential_crps": 0.4086815157518123
+  }
+}

@@ -1,0 +1,450 @@
+{
+ "comparisons": {
+  "primary": [
+   {
+    "dataset": "syn_exp_01",
+    "condition": "bs",
+    "holdout_change": -2.5663974932066957,
+    "original_change": -1.422945789841501,
+    "p": 0.5445853003385722,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_exp_01",
+    "condition": "ct",
+    "holdout_change": -8.410292195852985,
+    "original_change": -9.28357737176576,
+    "p": 0.1088782600415571,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_exp_01",
+    "condition": "ct_bs",
+    "holdout_change": -17.83387354369388,
+    "original_change": -16.61879073152552,
+    "p": 0.005162730618193369,
+    "p_holm": 0.10841734298206074
+   },
+   {
+    "dataset": "syn_powerlaw_01",
+    "condition": "bs",
+    "holdout_change": 0.011205472766784297,
+    "original_change": -0.027418613347907073,
+    "p": 0.9204414636451036,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_powerlaw_01",
+    "condition": "ct",
+    "holdout_change": -0.13409546878659917,
+    "original_change": -0.08378858800193179,
+    "p": 0.324308224383984,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_powerlaw_01",
+    "condition": "ct_bs",
+    "holdout_change": -0.047301310479919145,
+    "original_change": -0.06733358909529752,
+    "p": 0.663961577160827,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_powerlaw_02",
+    "condition": "bs",
+    "holdout_change": 0.0755803173417835,
+    "original_change": -0.022167414021112553,
+    "p": 0.44915541853536806,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_powerlaw_02",
+    "condition": "ct",
+    "holdout_change": -0.09068118625238375,
+    "original_change": -0.14828684620145083,
+    "p": 0.5549199147667822,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_powerlaw_02",
+    "condition": "ct_bs",
+    "holdout_change": -0.024009858298723596,
+    "original_change": -0.08928819908574637,
+    "p": 0.8516288873793487,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_corr_pareto_01",
+    "condition": "bs",
+    "holdout_change": 0.17969860295694584,
+    "original_change": 0.10813614990412557,
+    "p": 0.5679197997823628,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_corr_pareto_01",
+    "condition": "ct",
+    "holdout_change": -3.4389426760166653,
+    "original_change": -3.3414517113640962,
+    "p": 0.0005963720144972741,
+    "p_holm": 0.013716556333437305
+   },
+   {
+    "dataset": "syn_corr_pareto_01",
+    "condition": "ct_bs",
+    "holdout_change": -2.086407858618766,
+    "original_change": -2.099836803538091,
+    "p": 0.23524352507439406,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_corr_pareto_02",
+    "condition": "bs",
+    "holdout_change": 0.4699654848381085,
+    "original_change": 0.5031287979568422,
+    "p": 0.20195009615216092,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_corr_pareto_02",
+    "condition": "ct",
+    "holdout_change": -4.129308132494714,
+    "original_change": -3.713737170012066,
+    "p": 0.0003524536939758208,
+    "p_holm": 0.008458888655419699
+   },
+   {
+    "dataset": "syn_corr_pareto_02",
+    "condition": "ct_bs",
+    "holdout_change": -3.771350238435711,
+    "original_change": -3.2934557060168457,
+    "p": 0.0008972574202842938,
+    "p_holm": 0.019739663246254466
+   },
+   {
+    "dataset": "data_retweet_sampled",
+    "condition": "bs",
+    "holdout_change": 0.9038538117790873,
+    "original_change": 1.0833004093978804,
+    "p": 0.6845273160944741,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "data_retweet_sampled",
+    "condition": "ct",
+    "holdout_change": 1.8800212072502376,
+    "original_change": 1.9355993138477467,
+    "p": 0.33996314422552415,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "data_retweet_sampled",
+    "condition": "ct_bs",
+    "holdout_change": 2.095551701080778,
+    "original_change": 2.2761851928365218,
+    "p": 0.2494824332865093,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "data_so_sampled",
+    "condition": "bs",
+    "holdout_change": 0.016328636885076797,
+    "original_change": 0.017698911938701656,
+    "p": 0.8733491954170027,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "data_so_sampled",
+    "condition": "ct",
+    "holdout_change": 0.06342616440795368,
+    "original_change": -0.01911249204870069,
+    "p": 0.42587750142471087,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "data_so_sampled",
+    "condition": "ct_bs",
+    "holdout_change": 0.021188202575617154,
+    "original_change": -0.014263752245335937,
+    "p": 0.8101350405250047,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "data_earthquake",
+    "condition": "bs",
+    "holdout_change": -0.5480107376923837,
+    "original_change": -2.5961938662938056,
+    "p": 0.3620551615535414,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "data_earthquake",
+    "condition": "ct",
+    "holdout_change": 0.03603182104285896,
+    "original_change": 0.09690225957041942,
+    "p": 0.9612626609459761,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "data_earthquake",
+    "condition": "ct_bs",
+    "holdout_change": -0.5628100762064991,
+    "original_change": -2.524167818790679,
+    "p": 0.33802807023662024,
+    "p_holm": 1.0
+   }
+  ],
+  "nll_only": [
+   {
+    "dataset": "syn_exp_01",
+    "condition": "bs",
+    "holdout_change": -37.0953236150063,
+    "original_change": -40.23977833540013,
+    "p": 0.3461764854965495,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_exp_01",
+    "condition": "ct",
+    "holdout_change": -47.55381738672331,
+    "original_change": -51.31135194370934,
+    "p": 0.25771482101104703,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_exp_01",
+    "condition": "ct_bs",
+    "holdout_change": -46.346078741636795,
+    "original_change": -49.285679873966615,
+    "p": 0.26655279874462356,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_powerlaw_01",
+    "condition": "bs",
+    "holdout_change": -0.030052820279624637,
+    "original_change": -0.09479383355827098,
+    "p": 0.7988167118758429,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_powerlaw_01",
+    "condition": "ct",
+    "holdout_change": -0.12751949200157098,
+    "original_change": -0.06272781930147797,
+    "p": 0.36603685501523675,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_powerlaw_01",
+    "condition": "ct_bs",
+    "holdout_change": -0.07429654260298069,
+    "original_change": -0.22625173777293117,
+    "p": 0.5602170307877383,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_powerlaw_02",
+    "condition": "bs",
+    "holdout_change": -0.011084463863453298,
+    "original_change": 0.008184639338293387,
+    "p": 0.9149782512315067,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_powerlaw_02",
+    "condition": "ct",
+    "holdout_change": -0.039192807485854964,
+    "original_change": 0.007395003992849425,
+    "p": 0.6866574030373002,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_powerlaw_02",
+    "condition": "ct_bs",
+    "holdout_change": -0.10565641329588482,
+    "original_change": -0.05901073954347469,
+    "p": 0.329339276350767,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_corr_pareto_01",
+    "condition": "bs",
+    "holdout_change": 0.0716612747850176,
+    "original_change": 0.05400384591238705,
+    "p": 0.8104566635343275,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_corr_pareto_01",
+    "condition": "ct",
+    "holdout_change": -3.5300731954069464,
+    "original_change": -3.316691959234841,
+    "p": 4.3605956373241045e-05,
+    "p_holm": 0.001046542952957785
+   },
+   {
+    "dataset": "syn_corr_pareto_01",
+    "condition": "ct_bs",
+    "holdout_change": -2.652485876505506,
+    "original_change": -2.5602463592277025,
+    "p": 0.032240660991733505,
+    "p_holm": 0.6448132198346701
+   },
+   {
+    "dataset": "syn_corr_pareto_02",
+    "condition": "bs",
+    "holdout_change": 0.17691838998608045,
+    "original_change": -0.059931412045088894,
+    "p": 0.7195297011440044,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "syn_corr_pareto_02",
+    "condition": "ct",
+    "holdout_change": -4.149682641233355,
+    "original_change": -3.777697081142073,
+    "p": 0.0037028021679284475,
+    "p_holm": 0.08146164769442585
+   },
+   {
+    "dataset": "syn_corr_pareto_02",
+    "condition": "ct_bs",
+    "holdout_change": -4.066071651134928,
+    "original_change": -3.7015666794720126,
+    "p": 0.002169611493631747,
+    "p_holm": 0.049901064353530186
+   },
+   {
+    "dataset": "data_retweet_sampled",
+    "condition": "bs",
+    "holdout_change": -3.30384404956231,
+    "original_change": -2.81991793425046,
+    "p": 0.025048727198798082,
+    "p_holm": 0.5260232711747597
+   },
+   {
+    "dataset": "data_retweet_sampled",
+    "condition": "ct",
+    "holdout_change": 0.57671551069578,
+    "original_change": 0.5516494319778298,
+    "p": 0.34677884153624644,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "data_retweet_sampled",
+    "condition": "ct_bs",
+    "holdout_change": -0.027064923631481275,
+    "original_change": -0.005157848565839895,
+    "p": 0.9711380952155065,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "data_so_sampled",
+    "condition": "bs",
+    "holdout_change": 0.09230060433753629,
+    "original_change": 0.07582251327242773,
+    "p": 0.08288416196956025,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "data_so_sampled",
+    "condition": "ct",
+    "holdout_change": -0.02535739693584338,
+    "original_change": 0.032138783152269035,
+    "p": 0.4372571055965047,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "data_so_sampled",
+    "condition": "ct_bs",
+    "holdout_change": 0.011675238688413359,
+    "original_change": 0.028873178200505834,
+    "p": 0.8306580411074496,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "data_earthquake",
+    "condition": "bs",
+    "holdout_change": -0.5097210873863722,
+    "original_change": -1.0536627905705753,
+    "p": 0.43064025254528715,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "data_earthquake",
+    "condition": "ct",
+    "holdout_change": -0.5551321462538561,
+    "original_change": -1.023505709389616,
+    "p": 0.3381875171310132,
+    "p_holm": 1.0
+   },
+   {
+    "dataset": "data_earthquake",
+    "condition": "ct_bs",
+    "holdout_change": -0.19368108499902004,
+    "original_change": -0.6308219202244669,
+    "p": 0.7213408178019414,
+    "p_holm": 1.0
+   }
+  ]
+ },
+ "system": [
+  {
+   "dataset": "syn_exp_01",
+   "full_vs_gru": 20.429476548854254,
+   "full_vs_gru_original": 19.31315507521134,
+   "nll_ctbs_vs_gru": 29.76406245584822,
+   "nll_ctbs_vs_gru_original": 27.742619128862444
+  },
+  {
+   "dataset": "syn_powerlaw_01",
+   "full_vs_gru": 0.6424612997306456,
+   "full_vs_gru_original": 0.8059339493883488,
+   "nll_ctbs_vs_gru": 0.711011283386731,
+   "nll_ctbs_vs_gru_original": 0.7665827486867283
+  },
+  {
+   "dataset": "syn_powerlaw_02",
+   "full_vs_gru": 0.8345874424523059,
+   "full_vs_gru_original": 1.203722536674201,
+   "nll_ctbs_vs_gru": 0.8510197589255641,
+   "nll_ctbs_vs_gru_original": 1.152994507585836
+  },
+  {
+   "dataset": "syn_corr_pareto_01",
+   "full_vs_gru": 1.321316455164867,
+   "full_vs_gru_original": 1.1046946774412758,
+   "nll_ctbs_vs_gru": 1.9445599113112833,
+   "nll_ctbs_vs_gru_original": 1.5975951610510686
+  },
+  {
+   "dataset": "syn_corr_pareto_02",
+   "full_vs_gru": 0.9001808129356803,
+   "full_vs_gru_original": 0.9902129578555963,
+   "nll_ctbs_vs_gru": 0.8797716152194379,
+   "nll_ctbs_vs_gru_original": 0.9461891808034251
+  },
+  {
+   "dataset": "data_retweet_sampled",
+   "full_vs_gru": 24.089700033076667,
+   "full_vs_gru_original": 24.032986618342143,
+   "nll_ctbs_vs_gru": 18.604732960701863,
+   "nll_ctbs_vs_gru_original": 18.51114421890823
+  },
+  {
+   "dataset": "data_so_sampled",
+   "full_vs_gru": -0.1182252619840507,
+   "full_vs_gru_original": 0.15122999361651956,
+   "nll_ctbs_vs_gru": -0.1643830717688477,
+   "nll_ctbs_vs_gru_original": 0.06232052630885665
+  },
+  {
+   "dataset": "data_earthquake",
+   "full_vs_gru": 0.8417582842495941,
+   "full_vs_gru_original": 0.7316015973801937,
+   "nll_ctbs_vs_gru": 1.2046290734406773,
+   "nll_ctbs_vs_gru_original": 1.7875927053080165
+  }
+ ]
+}

@@ -18,10 +18,10 @@ scores are included (see [Not included](#not-included)); the runtime measurement
 | `ctbs/` | CT-BS-Mamba model and training script (models with the MB input token); `ctbs/thp_utils/` holds data loading and loss utilities |
 | `ctbs_nomb/` | Training script for the models without the MB input token (NLL-only objective, validation-LL checkpoint) |
 | `scripts/run_paper_configs.sh` | Launch settings of every reported CT-BS model |
-| `evaluation/` | Common evaluator (`common.py`), checkpoint scoring (`score_ctbs.py`), GRU-LogNormMix reference (`train_gru.py`, `gru_lognormmix.py`), scorer check (`check_scorer.py`) |
-| `data/` | Dataset reconstruction (`rebuild_datasets.py`, generators, `dataset_manifest.json`) |
+| `evaluation/` | Common evaluator (`common.py`), checkpoint scoring (`score_ctbs.py`), GRU-LogNormMix reference (`train_gru.py`, `gru_lognormmix.py`, `score_gru.py`), scorer check (`check_scorer.py`) |
+| `data/` | Dataset reconstruction (`rebuild_datasets.py`, generators, `dataset_manifest.json`) and the new test data of Supplementary Section S8 (`build_holdout.py`, `holdout_manifest.json`) |
 | `results/` | Per-seed results behind the reported tables and figures |
-| `analysis/` | Scripts that compute the dataset descriptors, history-light references, seed-level tests, CT weights, and per-target summaries in `results/` |
+| `analysis/` | Scripts that compute the dataset descriptors, history-light references, seed-level tests, CT weights, per-target summaries, and the new-test-data summary in `results/` |
 
 ## Requirements and installation
 
@@ -145,6 +145,25 @@ Train and score the GRU-LogNormMix reference (60 epochs, validation-LL checkpoin
 python evaluation/train_gru.py --dataset data_earthquake --seed 0 --out_dir gru_runs
 ```
 
+## Evaluation on new test data (Supplementary Section S8)
+
+The trained models were also scored, without retraining, on test sequences that entered neither
+training nor any configuration choice: new draws of the synthetic generators (new seeds) and the
+source test rows of earthquake, retweet and Stack Overflow that the benchmark does not use. Build
+them with the same source options as the benchmark and score checkpoints with `--data_dir`:
+
+```bash
+python data/build_holdout.py --output holdout --cache source_cache --nhp-so-dir /path/to/data_so/fold1
+python evaluation/score_ctbs.py --data_dir holdout --dataset data_earthquake --condition ct_bs \
+    --checkpoint <checkpoint> --out_dir scores_holdout/ct_bs/data_earthquake/seed0
+python evaluation/score_gru.py --data_dir holdout --dataset data_earthquake \
+    --checkpoint gru_runs/data_earthquake/seed0/best_model.pt --out_dir scores_holdout/gru/data_earthquake/seed0
+```
+
+`build_holdout.py` checks every dataset against the record hashes in `data/holdout_manifest.json`.
+Taxi has no unused source rows and is not included. The per-checkpoint scores are in
+`results/holdout_scores.csv`.
+
 Check the closed-form CRPS against numerical integration (no data needed):
 
 ```bash
@@ -176,6 +195,7 @@ seed means of the same dataset.
 | Table S7 | `intensity_baselines_common.csv` (`native_ll` and point errors), `mhp_amhp_point_errors.csv`, `common_scoring.csv` (`full_system`) |
 | Table S8 | `sampler_validation_summary.csv` |
 | Table S9 | `recorded_tables.json` |
+| Table S10 | `holdout_scores.csv` with `ablation_crps.csv`, `nll_ablation_eval.csv`, `common_scoring.csv` (`analysis/compute_holdout_summary.py`) |
 
 The analysis scripts overwrite their file in `results/` unless an output path is given as the
 last argument:
@@ -184,6 +204,7 @@ last argument:
 python analysis/compute_descriptors.py datasets         # results/dataset_descriptors.json
 python analysis/compute_simple_baselines.py datasets    # results/simple_baselines.json
 python analysis/compute_seed_tests.py                   # results/seed_tests.json
+python analysis/compute_holdout_summary.py              # results/holdout_summary.json
 python analysis/export_system_detail.py gru_runs scores/full_system   # <dir>/<dataset>/seed<k>/predictions.npz
 python analysis/export_ct_weights.py scores/full_system runs/full_system   # needs torch
 ```
@@ -220,7 +241,9 @@ uniform and their mean; `n` is the number of test targets.
 | `intensity_baselines_common.csv` | `dataset`, `model` (RMTPP, NHP, SAHP, AttNHP), `seed`, `native_ll` (native time-only LL), `rmse`, `bulk_rmse`, `tail_rmse` (point errors on the common targets), `n`, `checkpoint_sha256` |
 | `mhp_amhp_point_errors.csv` | `dataset`, `model` (MHP, A-MHP), `seed`, `rmse`, `bulk_rmse`, `tail_rmse`, `checkpoint_sha256` |
 | `sampler_validation_summary.csv` | `model`, `contexts` (checked test contexts), `unresolved_contexts` (unresolved intensity check), `bound_violation_contexts` (a proposal above the probed bound), `fallback_contexts` (a fallback draw), `cap_contexts` (a capped draw) |
-| `recorded_tables.json` | `architecture_search`: `columns`, `rows` (single-seed RMSE as printed), `diverged_cells` (`row`, `column` of the diverged run) |
+| `recorded_tables.json` | `architecture_search`: `columns`, `rows` (single-run RMSE as printed), `diverged_cells` (`row`, `column` of the diverged run), `note` |
+| `holdout_scores.csv` | `dataset`, `recipe` (`primary`, `nll_only`, `gru`), `condition`, `seed`, `checkpoint_sha256`, `n`, `crps`, `ll`, `rmse`, `tail_crps`, `pit_KS`, `pit_mean` (new test data) |
+| `holdout_summary.json` | `comparisons` (per recipe: CRPS change on the new and original test data, Welch `p`, Holm `p_holm`) and `system` (full system and NLL-only +CT+BS relative to the GRU) |
 | `ct_weights_seed0.json` | Per dataset: `checkpoint_sha256`, `alpha_layer_mean` (six weights, shortest to longest horizon), `alpha_by_layer` (four layers) |
 | `dataset_descriptors.json` | Per dataset: `events_per_train_sequence`, `B`, `M`, `test_sd`, `n_test_targets`, `tail_index`, `tail_index_source` |
 | `simple_baselines.json` | Per dataset: `n_targets`, `marginal_crps`, `running_mean_exponential_crps` |

@@ -109,6 +109,12 @@ These runs are written under `<result_dir>/syn_exp_01/`.
 GPU kernels are not deterministic, so retrained models can differ from the reported ones within
 seed variation. A one-epoch smoke test: `bash scripts/run_paper_configs.sh data_earthquake ct_bs 0 runs/smoke -epoch 1`.
 
+Epoch-level evaluation and checkpoint selection use `dev.pkl` (another file can be named with
+`CTBS_VAL_PKL`); a missing validation file stops the run. The LL and RMSE printed during training are
+monitoring quantities whose denominators count non-zero timestamps (and that count minus the batch
+size), as in the reported runs; they can differ slightly from per-target values. The reported scores
+come from `evaluation/score_ctbs.py`, which counts next-event targets exactly.
+
 The training scripts keep a few options that the launch file does not set and that no reported
 model uses: the point-prediction head (`-iet_head point`, with `-time_loss mse|huber|q90` and
 `-scale_event`), `-ct_mode log_abs`, `--no_rnn`, `-mb_mode bs_only` in `ctbs/`, the

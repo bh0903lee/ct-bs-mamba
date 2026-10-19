@@ -43,7 +43,7 @@ def prepare_mb(
     event_type: torch.Tensor,
     mb_mode: str = 'bs_only',
 ) -> tuple:
-    """Sliding-window memory/burstiness statistics and the MB tokens for mb_mode.
+    """Expanding-prefix memory/burstiness statistics and the MB tokens for mb_mode.
 
     Returns (mb, mem_coef, burstiness), each (B, L). For 'rowmajor', mb is the MB token
     B_q * N_BIN + M_q + 1; for 'bs_only', mb is a constant non-zero token used only for the
@@ -95,6 +95,11 @@ def run_batch(
     enc, head_out, mb_pred = model(mb, event_time, iet, burstiness, mem_coef)
 
     mb_loss, _ = Utils.type_loss(mb_pred, mb, pred_loss_func)
+    # Monitoring denominators, kept exactly as used for the reported runs: num_event counts
+    # non-PAD timestamps and num_pred = num_event - batch size. They differ from the number of
+    # next-event targets (pmask.sum()) by one for each sequence whose first timestamp is zero,
+    # so the LL and RMSE printed during training are monitoring quantities. The reported scores
+    # come from evaluation/score_ctbs.py, which counts the targets exactly.
     num_event = event_time.ne(Constants.PAD).sum().item()
 
     if model.iet_head == 'mixture':
@@ -331,14 +336,16 @@ def prepare_dataloader(opt):
 
     log(f'Loading data from {opt.data}')
     train_data, _  = _load(opt.data + 'train.pkl', 'train')
-    # CTBS_VAL_PKL=dev.pkl runs epoch-level evaluation and best-epoch selection on the dev
-    # split; test metrics are then computed from the saved checkpoint. Unset: test split.
-    _val_pkl = os.environ.get('CTBS_VAL_PKL')
-    if _val_pkl:
-        test_data, _ = _load(opt.data + _val_pkl, _val_pkl.rsplit('.', 1)[0])
-        log(f'Validation stream: {_val_pkl}')
-    else:
-        test_data,  _  = _load(opt.data + 'test.pkl',  'test')
+    # Epoch-level evaluation and best-epoch selection use the validation split: dev.pkl by
+    # default, or the file named by CTBS_VAL_PKL. Test metrics are computed afterwards from the
+    # saved checkpoint with the common evaluator. A missing validation file is an error; the
+    # test split is never used silently.
+    _val_pkl = os.environ.get('CTBS_VAL_PKL', 'dev.pkl')
+    if not os.path.exists(opt.data + _val_pkl):
+        raise FileNotFoundError(f'Validation file not found: {opt.data + _val_pkl} '
+                                '(set CTBS_VAL_PKL to name another split)')
+    test_data, _ = _load(opt.data + _val_pkl, _val_pkl.rsplit('.', 1)[0])
+    log(f'Validation stream: {_val_pkl}')
     trainloader = get_dataloader(train_data, opt.batch_size, shuffle=True)
     testloader  = get_dataloader(test_data,  opt.batch_size, shuffle=False)
     return trainloader, testloader, N_VOCAB

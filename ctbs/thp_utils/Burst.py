@@ -3,13 +3,13 @@ import torch
 MIN_EVENT = 4
 
 def memory_coefficient_sliding(iet_array):
-    # Sliding-window memory coefficient (Pearson r of adjacent IETs) over prefixes of one sequence.
+    # Lag-one memory coefficient (Pearson r of adjacent IETs) over the expanding prefixes of one sequence.
     # A constant window has zero variance, so r is undefined; it is set to 0.0 (no correlation).
     _EPS = 1e-9
     M = dict()
     min_n = MIN_EVENT  # computed from this prefix length onward
     iet_array = iet_array.cpu().numpy()
-    for idx_n in range(1, min_n):  # fixed placeholder for prefixes shorter than min_n
+    for idx_n in range(1, min(min_n, iet_array.shape[0] + 1)):  # fixed placeholder for prefixes shorter than min_n
         M[idx_n] = 0.2
     for idx_n in range(min_n, iet_array.shape[0]+1):
         iet_seg = iet_array[:idx_n]
@@ -29,7 +29,7 @@ def memory_coefficient_sliding(iet_array):
     return M
 
 def burstiness_sliding(iet_array, mode='finite'):
-    # Sliding-window burstiness over prefixes of one sequence.
+    # Burstiness over the expanding prefixes of one sequence.
     # Guard: if the window mean is <= EPS, r = std/mean is undefined, so B is set to 0.0.
     _EPS = 1e-9
     FIX_INFTY = 1e-9
@@ -37,7 +37,7 @@ def burstiness_sliding(iet_array, mode='finite'):
     min_n = MIN_EVENT
     iet_array = iet_array.cpu().numpy()
     if mode == 'finite':
-        for idx_n in range(1, min_n):  # 0.0 for prefixes shorter than min_n
+        for idx_n in range(1, min(min_n, iet_array.shape[0] + 1)):  # 0.0 for prefixes shorter than min_n
             B[idx_n] = 0.0
         for idx_n in range(min_n, iet_array.shape[0]+1):
             iet_seg = iet_array[:idx_n]
@@ -55,7 +55,7 @@ def burstiness_sliding(iet_array, mode='finite'):
             r = iet_seg.std() / mean_iet
             B[idx_n] = (a * r - b) / ((a - 2) * r + b + FIX_INFTY)
     elif mode == 'normal':
-        for idx_n in range(1, min_n):  # 0.0 for prefixes shorter than min_n
+        for idx_n in range(1, min(min_n, iet_array.shape[0] + 1)):  # 0.0 for prefixes shorter than min_n
             B[idx_n] = 0.0
         for idx_n in range(min_n, iet_array.shape[0]+1):
             iet_seg = iet_array[:idx_n]

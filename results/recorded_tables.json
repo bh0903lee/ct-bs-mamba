@@ -1,6 +1,6 @@
 {
  "architecture_search": {
-  "description": "Single-seed RMSE of configuration variants trained for 50 epochs with a point-prediction head on the three tuning datasets (Supplementary Table S11). diverged_cells lists the run that diverged.",
+  "description": "Single-seed RMSE of configuration variants trained for 50 epochs with a point-prediction head on the three tuning datasets (Supplementary Table S9). diverged_cells lists the run that diverged.",
   "columns": [
    "configuration",
    "power_law_tuning",

@@ -158,7 +158,7 @@ def mixture_nll(raw: torch.Tensor, tau: torch.Tensor, K: int,
 
 
 def mixture_mean(raw: torch.Tensor, K: int, max_val: float = 1e6) -> torch.Tensor:
-    """Mixture mean E[tau] = sum_k w_k exp(mu_k + sigma_k^2 / 2), clamped at max_val."""
+    """Mixture mean E[tau] = sum_k w_k exp(mu_k + sigma_k^2 / 2); each component mean is capped at max_val before the weighted sum."""
     log_w, mu, log_sigma = split_mixture(raw, K)
     sigma = log_sigma.exp()
     comp_mean = torch.exp((mu + 0.5 * sigma * sigma).clamp(max=math.log(max_val)))
@@ -187,8 +187,9 @@ class _RNNLayers(nn.Module):
 
 
 class CTBSMamba(nn.Module):
-    """CT-BSMamba model. use_ct / use_bs toggle the CT and BS terms; both False gives a
-    plain Mamba encoder. iet_head: 'point' (softplus) or 'mixture' (log-normal mixture)."""
+    """CT-BSMamba model. use_ct / use_bs toggle the CT and BS terms; with both False the model
+    is the input-conditioned control (input embedding, time encoding, LSTM and head unchanged).
+    iet_head: 'point' (softplus) or 'mixture' (log-normal mixture)."""
 
     def __init__(
         self,

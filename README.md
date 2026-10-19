@@ -113,7 +113,7 @@ model uses: the point-prediction head (`-iet_head point`, with `-time_loss mse|h
 `-scale_mb`/`-scale_mem`/`-scale_burst` arguments, `CTBS_EMA_BETA`/`CTBS_EMA_K` (single-reference
 CT term, used only when `CTBS_CT_POLES` is unset) and `CTBS_BM_MODE=off` in `ctbs_nomb/`
 (uncached statistics, identical values). The point-head options correspond to variants of the
-architecture search (Supplementary Table S10), whose results are included only as recorded
+architecture search (Supplementary Table S9), whose results are included only as recorded
 values.
 
 ## Evaluation
@@ -170,10 +170,9 @@ seed means of the same dataset.
 | Fig. S1, S2 | `ablation_crps.csv` (`crps`), `ablation_eval.csv` (`ll`, `rmse`, `bulk_rmse`, `tail_rmse`, `crps_sampled`, `tail_crps_sampled`) |
 | Fig. S3 | `pit_seed0.csv`, `pit_panel_data.json.gz` |
 | Fig. 4 | `ct_weights_seed0.json` (`analysis/export_ct_weights.py`) |
-| Table S7 | `intensity_baselines_common.csv` (`native_ll`), `common_scoring.csv` (`ll` of `full_system`) |
+| Table S7 | `intensity_baselines_common.csv` (`native_ll` and point errors), `mhp_amhp_point_errors.csv`, `common_scoring.csv` (`full_system`) |
 | Table S8 | `sampler_validation_summary.csv` |
-| Table S9 | `intensity_baselines_common.csv`, `mhp_amhp_point_errors.csv`, `common_scoring.csv` (`full_system`) |
-| Table S10 | `recorded_tables.json` |
+| Table S9 | `recorded_tables.json` |
 
 The analysis scripts overwrite their file in `results/` unless an output path is given as the
 last argument:
@@ -235,7 +234,7 @@ uniform and their mean; `n` is the number of test targets.
 - The sampled-CRPS estimator behind the `crps_sampled`, `bulk_crps_sampled` and
   `tail_crps_sampled` columns (Supplementary Table S2 and Fig. S1); only its per-seed values are
   included.
-- The training runs of the architecture search (Supplementary Table S10); only their recorded
+- The training runs of the architecture search (Supplementary Table S9); only their recorded
   RMSE values are included.
 - The runtime measurements of Table 6.
 

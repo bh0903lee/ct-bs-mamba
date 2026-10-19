@@ -46,8 +46,9 @@ SOFTWARE.
 - The intensity-based baselines (RMTPP, NHP, SAHP, AttNHP) were trained and evaluated with
   EasyTPP (https://github.com/ant-research/EasyTemporalPointProcess, Apache License 2.0). No
   EasyTPP code is included; `results/` contains only their recorded scores.
-- MHP and A-MHP scores in `results/mhp_amhp_point_errors.csv` come from separately trained runs;
-  no code of these models is included.
+- MHP and A-MHP scores in `results/mhp_amhp_point_errors.csv` come from runs of the authors'
+  released code with its default settings (40 epochs, five seeds); no code of these models is
+  included.
 - The selective state-space block in `ctbs/mamba_core.py` and `ctbs_nomb/mamba_core.py` is an
   independent pure-PyTorch implementation of the Mamba layer described by Gu and Dao (2023);
   it contains no code from the official `mamba-ssm` package.

@@ -20,7 +20,13 @@ HERE = Path(__file__).resolve().parent
 
 def correlated_exponential(seed, n=1000, test_fraction=0.2):
     """Generator of the correlated-exponential benchmark (theta ~ U(1,100), |kappa| in [0.01,1/3],
-    50-500 events, intervals rounded to 0.01); returns the last test_fraction of each sequence."""
+    50-500 events, intervals rounded to 0.01); returns the last test_fraction of each sequence.
+
+    The inverse-transform step inverts 1-(1+c)z+cz^2 with z=exp(-x/theta), the conditional CDF of a
+    Farlie-Gumbel-Morgenstern copula with exponential marginals, which is valid only for |c|<=1, i.e.
+    for every predecessor only when |kappa|<=1/4. The released benchmark samples |kappa| up to 1/3;
+    steps with |c|>1 then draw from the selected root, a proper but different conditional law. The
+    generator is kept as released so that it reproduces the benchmark (Supplementary Section S2)."""
     np.random.seed(seed); random.seed(seed)
     mu = np.random.uniform(1, 100, n)
     M = list(np.concatenate((np.random.uniform(-1 / 3, -0.01, n // 2), np.random.uniform(0.01, 1 / 3, n // 2)))); random.shuffle(M)

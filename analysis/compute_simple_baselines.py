@@ -1,5 +1,5 @@
 """CRPS of two history-light reference forecasts on the common next-event targets.
-  marginal:     empirical distribution of all training intervals (no history).
+  marginal:     empirical distribution of all noninitial training intervals (no history).
   running mean: exponential distribution whose mean is the average of the observed intervals so far.
 Usage: python analysis/compute_simple_baselines.py <data_dir> [output.json]
 Writes results/simple_baselines.json by default.

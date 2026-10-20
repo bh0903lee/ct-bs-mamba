@@ -13,7 +13,7 @@ def memory_coefficient_sliding(iet_array):
         M[idx_n] = 0.2
     for idx_n in range(min_n, iet_array.shape[0]+1):
         iet_seg = iet_array[:idx_n]
-        if round(iet_seg[-1], 7) == 0.0:  # padded tail
+        if round(iet_seg[-1], 7) == 0.0:  # a rounded zero (padding or a genuine zero gap) ends the computation
             for idx in range(idx_n, iet_array.shape[0]+1):
                 M[idx] = 0.0
             break

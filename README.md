@@ -167,7 +167,10 @@ python evaluation/score_gru.py --data_dir holdout --dataset data_earthquake \
 ```
 
 `build_holdout.py` checks every dataset against the record hashes in `data/holdout_manifest.json`.
-Taxi has no unused source rows and is not included. The per-checkpoint scores are in
+Taxi has no unused source rows and is not included. The correlated-exponential generator is kept as released with BMT, including
+its memory-parameter range |kappa| <= 1/3; for |kappa| > 1/4 some inverse-transform steps leave the
+valid range of the underlying copula, so its intervals are approximately rather than exactly
+exponential (Supplementary Section S2). The per-checkpoint scores are in
 `results/holdout_scores.csv`.
 
 Check the closed-form CRPS against numerical integration (no data needed):

@@ -22,14 +22,15 @@ export CTBS_CT_POLES=6 CTBS_CT_WMAX=128
 # Point-loss weight: eta = 1/CTBS_SCALE_TIME (default 1000, eta = 1e-3; 1e12 gives eta ~ 0).
 # CTBS_SCALE_MB=0 removes the MB-token classification term; --no_aux_loss removes the
 # auxiliary statistic terms. CTBS_SELECT=ll keeps the epoch with the highest validation LL
-# (default: lowest validation RMSE).
+# (default: lowest validation RMSE). Each condition below sets these variables explicitly, so
+# values exported in the calling shell do not change the reported recipes.
 
 case "$cond" in
-  input_only)  CTBS_SCALE_MB=0 "$PYTHON" "$here/ctbs/main_ct_bsmamba.py" "${common[@]}" -mb_mode rowmajor ;;
-  bs)          CTBS_SCALE_MB=0 "$PYTHON" "$here/ctbs/main_ct_bsmamba.py" "${common[@]}" -mb_mode rowmajor --use_bs ;;
-  ct)          CTBS_SCALE_MB=0 "$PYTHON" "$here/ctbs/main_ct_bsmamba.py" "${common[@]}" -mb_mode rowmajor --use_ct ;;
-  ct_bs)       CTBS_SCALE_MB=0 "$PYTHON" "$here/ctbs/main_ct_bsmamba.py" "${common[@]}" -mb_mode rowmajor --use_ct --use_bs ;;
-  ct_bs_eta0)  CTBS_SCALE_MB=0 CTBS_SCALE_TIME=1e12 \
+  input_only)  CTBS_SCALE_MB=0 CTBS_SCALE_TIME=1000 CTBS_SELECT=rmse "$PYTHON" "$here/ctbs/main_ct_bsmamba.py" "${common[@]}" -mb_mode rowmajor ;;
+  bs)          CTBS_SCALE_MB=0 CTBS_SCALE_TIME=1000 CTBS_SELECT=rmse "$PYTHON" "$here/ctbs/main_ct_bsmamba.py" "${common[@]}" -mb_mode rowmajor --use_bs ;;
+  ct)          CTBS_SCALE_MB=0 CTBS_SCALE_TIME=1000 CTBS_SELECT=rmse "$PYTHON" "$here/ctbs/main_ct_bsmamba.py" "${common[@]}" -mb_mode rowmajor --use_ct ;;
+  ct_bs)       CTBS_SCALE_MB=0 CTBS_SCALE_TIME=1000 CTBS_SELECT=rmse "$PYTHON" "$here/ctbs/main_ct_bsmamba.py" "${common[@]}" -mb_mode rowmajor --use_ct --use_bs ;;
+  ct_bs_eta0)  CTBS_SCALE_MB=0 CTBS_SCALE_TIME=1e12 CTBS_SELECT=rmse \
                "$PYTHON" "$here/ctbs/main_ct_bsmamba.py" "${common[@]}" -mb_mode rowmajor --use_ct --use_bs ;;
   # NLL-only ablation: point-loss term removed (eta ~ 0) and validation-LL checkpoint.
   nll_input_only) CTBS_SCALE_MB=0 CTBS_SCALE_TIME=1e12 CTBS_SELECT=ll "$PYTHON" "$here/ctbs/main_ct_bsmamba.py" "${common[@]}" -mb_mode rowmajor ;;

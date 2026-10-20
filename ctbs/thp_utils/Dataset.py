@@ -9,7 +9,7 @@ class EventData(torch.utils.data.Dataset):
     """ Event stream dataset. """
     def __init__(self, data):
         """
-        Data should be a list of event streams; each event stream is a list of dictionaries;
+        Data maps sequence IDs to event streams; each event stream is a list of dictionaries;
         each dictionary contains: time_since_start, time_since_last_event, type_event
         """
         self.time = [[elem['time_since_start'] for elem in data[inst]] for inst in data]

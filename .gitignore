@@ -6,3 +6,5 @@ runs/
 scores/
 gru_runs/
 *.pt
+holdout/
+scores_holdout/

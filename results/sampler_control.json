@@ -1,0 +1,19 @@
+{
+ "description": "Analytic control of the thinning sampler used for the sampled CRPS of the intensity-based baselines (Supplementary Section S7): constant intensity 1 with proposal rate 5, CRPS at y = 1 estimated by the U-statistic; independent batches of 100 draws. The independent control uses inverse-transform Exp(1) draws.",
+ "exact_crps": 0.23575888234288467,
+ "predicted_shared_proposal_bias": 0.05555555555555555,
+ "sampler": {
+  "batches": 4096,
+  "draws_per_batch": 100,
+  "crps_mean": 0.28905677512647865,
+  "crps_batch_se": 0.0016241776195258207,
+  "fallback_draws": 0,
+  "cap_draws": 0,
+  "proposal_bound_violations": 0
+ },
+ "independent_inverse": {
+  "batches": 4096,
+  "mean_crps": 0.2357830603281541,
+  "batch_se": 0.00036034572771034514
+ }
+}

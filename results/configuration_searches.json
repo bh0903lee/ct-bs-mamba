@@ -1,0 +1,298 @@
+{
+ "ct_reference_selection": {
+  "description": "CT reference candidates, +CT+BS, MB input, point-loss recipe, seed 0, at most 100 epochs, patience 20. Value: maximum validation LL over epochs (nats per event with a nonzero timestamp, as logged by the training script). Rule: lowest mean rank over the four datasets.",
+  "datasets": [
+   "syn_powerlaw_01",
+   "syn_powerlaw_02",
+   "syn_corr_pareto_01",
+   "data_earthquake"
+  ],
+  "candidates": [
+   {
+    "candidate": "R=12, W_max=128",
+    "selected": true,
+    "max_validation_ll": {
+     "syn_powerlaw_01": -0.87836,
+     "syn_powerlaw_02": -1.2453,
+     "syn_corr_pareto_01": 1.80998,
+     "data_earthquake": -0.74232
+    },
+    "rank": {
+     "syn_powerlaw_01": 2,
+     "syn_powerlaw_02": 2,
+     "syn_corr_pareto_01": 1,
+     "data_earthquake": 2
+    },
+    "mean_rank": 1.75
+   },
+   {
+    "candidate": "R=12, W_max=64",
+    "selected": false,
+    "max_validation_ll": {
+     "syn_powerlaw_01": -0.87872,
+     "syn_powerlaw_02": -1.24515,
+     "syn_corr_pareto_01": 1.80856,
+     "data_earthquake": -0.74141
+    },
+    "rank": {
+     "syn_powerlaw_01": 3,
+     "syn_powerlaw_02": 1,
+     "syn_corr_pareto_01": 3,
+     "data_earthquake": 1
+    },
+    "mean_rank": 2.0
+   },
+   {
+    "candidate": "R=6, W_max=64",
+    "selected": false,
+    "max_validation_ll": {
+     "syn_powerlaw_01": -0.87831,
+     "syn_powerlaw_02": -1.24574,
+     "syn_corr_pareto_01": 1.80203,
+     "data_earthquake": -0.74317
+    },
+    "rank": {
+     "syn_powerlaw_01": 1,
+     "syn_powerlaw_02": 3,
+     "syn_corr_pareto_01": 4,
+     "data_earthquake": 4
+    },
+    "mean_rank": 3.0
+   },
+   {
+    "candidate": "R=6, W_max=128",
+    "selected": false,
+    "max_validation_ll": {
+     "syn_powerlaw_01": -0.87893,
+     "syn_powerlaw_02": -1.24592,
+     "syn_corr_pareto_01": 1.80947,
+     "data_earthquake": -0.74415
+    },
+    "rank": {
+     "syn_powerlaw_01": 4,
+     "syn_powerlaw_02": 4,
+     "syn_corr_pareto_01": 2,
+     "data_earthquake": 5
+    },
+    "mean_rank": 3.75
+   },
+   {
+    "candidate": "One reference (R=1)",
+    "selected": false,
+    "max_validation_ll": {
+     "syn_powerlaw_01": -0.88015,
+     "syn_powerlaw_02": -1.24906,
+     "syn_corr_pareto_01": 1.766,
+     "data_earthquake": -0.74271
+    },
+    "rank": {
+     "syn_powerlaw_01": 5,
+     "syn_powerlaw_02": 5,
+     "syn_corr_pareto_01": 5,
+     "data_earthquake": 3
+    },
+    "mean_rank": 4.5
+   }
+  ]
+ },
+ "architecture_search": {
+  "description": "Architecture variants, point-prediction head, single CT reference, seed 42, 50 epochs. Value: minimum validation RMSE over epochs. Rule: lowest unweighted three-dataset mean. power_law_tuning is a separate power-law dataset that is not part of the evaluation suite.",
+  "datasets": [
+   "power_law_tuning",
+   "data_so_sampled",
+   "syn_exp_01"
+  ],
+  "variants": [
+   {
+    "variant": "d=256, d_rnn=128",
+    "selected": true,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.80362,
+     "data_so_sampled": 0.61516,
+     "syn_exp_01": 67.95912
+    },
+    "mean": 23.79263333333333
+   },
+   {
+    "variant": "State size 32",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.77118,
+     "data_so_sampled": 0.62379,
+     "syn_exp_01": 68.10368
+    },
+    "mean": 23.83288333333333
+   },
+   {
+    "variant": "Reference configuration (d=128, d_rnn=64)",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.76229,
+     "data_so_sampled": 0.61978,
+     "syn_exp_01": 68.13215
+    },
+    "mean": 23.83807333333333
+   },
+   {
+    "variant": "No auxiliary loss",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.76229,
+     "data_so_sampled": 0.61978,
+     "syn_exp_01": 68.13215
+    },
+    "mean": 23.83807333333333
+   },
+   {
+    "variant": "CT on absolute log-intervals",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.77566,
+     "data_so_sampled": 0.61786,
+     "syn_exp_01": 68.16258
+    },
+    "mean": 23.852033333333335
+   },
+   {
+    "variant": "BS hidden width 32",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.78246,
+     "data_so_sampled": 0.62071,
+     "syn_exp_01": 68.1967
+    },
+    "mean": 23.866623333333337
+   },
+   {
+    "variant": "CT: tanh correction",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.77541,
+     "data_so_sampled": 0.61888,
+     "syn_exp_01": 68.27535
+    },
+    "mean": 23.88988
+   },
+   {
+    "variant": "BS: multiplicative corrections",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.77819,
+     "data_so_sampled": 0.61903,
+     "syn_exp_01": 68.83545
+    },
+    "mean": 24.077556666666666
+   },
+   {
+    "variant": "6 encoder layers",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.77728,
+     "data_so_sampled": 0.62103,
+     "syn_exp_01": 69.10146
+    },
+    "mean": 24.16659
+   },
+   {
+    "variant": "No BS output correction",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.77256,
+     "data_so_sampled": 0.62087,
+     "syn_exp_01": 69.18781
+    },
+    "mean": 24.193746666666666
+   },
+   {
+    "variant": "IET loss: asymmetric",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.85222,
+     "data_so_sampled": 0.67602,
+     "syn_exp_01": 70.03342
+    },
+    "mean": 24.520553333333336
+   },
+   {
+    "variant": "IET loss: weighted MSE",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.85784,
+     "data_so_sampled": 0.79764,
+     "syn_exp_01": 70.04077
+    },
+    "mean": 24.565416666666664
+   },
+   {
+    "variant": "No LSTM refinement",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 3.00324,
+     "data_so_sampled": 0.77736,
+     "syn_exp_01": 73.61462
+    },
+    "mean": 25.798406666666665
+   },
+   {
+    "variant": "IET loss: pinball q=0.9",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.80157,
+     "data_so_sampled": 0.77566,
+     "syn_exp_01": 74.79903
+    },
+    "mean": 26.125420000000002
+   },
+   {
+    "variant": "IET loss: Huber",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.81574,
+     "data_so_sampled": 0.61787,
+     "syn_exp_01": 75.82151
+    },
+    "mean": 26.418373333333335
+   },
+   {
+    "variant": "IET loss: pinball q=0.5",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.83719,
+     "data_so_sampled": 0.62343,
+     "syn_exp_01": 76.68077
+    },
+    "mean": 26.713796666666667
+   },
+   {
+    "variant": "IET loss: log-MSE",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.81199,
+     "data_so_sampled": 0.64061,
+     "syn_exp_01": 79.38943
+    },
+    "mean": 27.614010000000004
+   },
+   {
+    "variant": "IET loss: log-pinball q=0.9",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.80266,
+     "data_so_sampled": 0.77874,
+     "syn_exp_01": 79.44933
+    },
+    "mean": 27.676910000000003
+   },
+   {
+    "variant": "IET loss: dual",
+    "selected": false,
+    "min_validation_rmse": {
+     "power_law_tuning": 2.78035,
+     "data_so_sampled": 0.62485,
+     "syn_exp_01": 79.72369
+    },
+    "mean": 27.70963
+   }
+  ]
+ }
+}
